@@ -1,0 +1,43 @@
+# Windows Sandbox Project 2 - Testing PowerShell Scripts Safely. Step 2 - Run Test Script. Example 1 - Generate Hundreds of Files (Safe Demo).
+mkdir C:\SandboxTest; 1..200 | % { New-Item -Path "C:\SandboxTest\File$_.txt" -ItemType File }; Write-Host "200 files created successfully!"
+
+# Windows Sandbox Project 2 - Testing PowerShell Scripts Safely. Step 2 - Run Test Script. Example 2 - Massive Folder Structure Generator. 
+mkdir C:\LabFolders
+
+1..20 | ForEach-Object {
+    mkdir "C:\LabFolders\Project$_"
+}
+
+# Windows Sandbox Project 2 - Testing PowerShell Scripts Safely. Step 2 - Run Test Script. Example 2 - Massive Folder Structure Generator. Optional advanced version:
+mkdir C:\LabFolders; 1..20 | % { mkdir "C:\LabFolders\Project$_"; mkdir "C:\LabFolders\Project$_\Logs"; mkdir "C:\LabFolders\Project$_\Configs"; mkdir "C:\LabFolders\Project$_\Backups" }
+
+# Windows Sandbox Project 2 - Testing PowerShell Scripts Safely. Step 2 - Run Test Script. Example 3 - Change Sandbox Desktop Wallpaper:
+Add-Type -TypeDefinition 'using System.Runtime.InteropServices; public class Wallpaper { [DllImport("user32.dll", SetLastError=true)] public static extern bool SystemParametersInfo(int uAction, int uParam, string lpvParam, int fuWinIni); }'; [Wallpaper]::SystemParametersInfo(20,0,"C:\Users\
+WDAGUtilityAccount\Desktop\wallpaper.jpg",3)
+
+# Windows Sandbox Project 2 - Testing PowerShell Scripts Safely. Step 2 - Run Test Script. Example 4 - Create Fake “Corporate Environment”:
+mkdir C:\IT-Department
+mkdir C:\IT-Department\Backups
+mkdir C:\IT-Department\Scripts
+mkdir C:\IT-Department\Logs
+
+New-Item C:\IT-Department\README.txt -ItemType File
+
+notepad C:\IT-Department\README.txt
+
+# Windows WSL2 Project 4 - Create Bash Automation Scripts. Step 2 - Type, Copy and Paste Script:
+#!/bin/bash
+
+mkdir HomelabProjects
+cd HomelabProjects
+
+mkdir Docker
+mkdir Backups
+mkdir Scripts
+
+touch notes.txt
+
+echo "Homelab project structure created successfully!"
+
+# Docker for Windows Project 1 - Homepage (Windows Terminal). Step 2 - Deploy Homepage Container. Run:
+docker run -d --name homepage -p 3000:3000 -v C:\Docker\Homepage\Config:/app/config --restart unless-stopped ghcr.io/gethomepage/homepage:latest
