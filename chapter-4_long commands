@@ -1,0 +1,4 @@
+# Installing Home Assistant on Proxmox. Step 2 - Download KVM image directly in Proxmox:
+wget https://github.com/home-assistant/
+operating-system/releases/download/17.3/
+haos_ova-17.3.qcow2.xz
