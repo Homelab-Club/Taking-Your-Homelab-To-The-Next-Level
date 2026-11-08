@@ -1,0 +1,11 @@
+# Wazuh Project 3 - Monitoring Critical Files on a Linux Agent. Step 4 - Add Directories to Watch. ossec.conf:
+<syscheck>
+  <disabled>no</disabled>
+  <scan_on_start>yes</scan_on_start>
+  <frequency>43200</frequency>
+
+  <directories realtime="yes">/etc/passwd</directories>
+  <directories realtime="yes">/etc/shadow</directories>
+  <directories realtime="yes">/etc/ssh/sshd_config</directories>
+  <directories realtime="yes" report_changes="yes">/var/www/html</directories>
+</syscheck>
